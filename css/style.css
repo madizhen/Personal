@@ -141,6 +141,9 @@ ul.links li{
 	padding: 7px;
 }
 
-::-webkit-scrollbar {
-    display:none;
-}
+#posts {
+  	font-family: 'palatino', sans-serif;
+  	color: #444447;
+  	text-align: justify;
+  	padding-bottom: 20px;
+  }
