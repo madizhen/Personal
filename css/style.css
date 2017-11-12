@@ -141,6 +141,17 @@ ul.links li{
 	padding: 7px;
 }
 
+images {
+    display: inline-block;
+    margin-left: center;
+    margin-right: center;
+    text-align: center;
+}
+
+#maps{
+    text-align:center;
+}
+
 #posts {
   	font-family: 'palatino', sans-serif;
   	color: #444447;
