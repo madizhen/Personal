@@ -1,3 +1,3 @@
-# madisondraper.github.io/personal
+# madizhen.github.io/personal
 
 Check out my site! This is a basic overview of me, but also a a nexus of my thoughts--in a bloggy form.
