@@ -36,7 +36,7 @@ a:link, a:visited {
 	position:absolute;
 	left:0; right:0;
 	top:0; bottom:0;
-	margin:90x auto auto auto;
+	margin:auto;
 	max-width:100%;
 	max-height:100%;
 	overflow:visible;
@@ -44,6 +44,7 @@ a:link, a:visited {
 
 .left {
 	float: left;
+	position: center;
 	width:42%;
 	text-align: right;
 	display:inline;
