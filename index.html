@@ -88,164 +88,45 @@
     <h3><u>Post-Its.</u></h3>
     <p><i>My posts are about data-visualization, cartographic-representation, coding and probably weird-things-my-dogs-do. Posts are #tagged, but just for ctrl+f functioning for now.</i></p>
 	
-    <b>Novermber 24 2017.</b> Openstreetmap is an open source, editable project where the community can create and distribute geographic data of the world. Most people probably think they only use Google Maps or other navigation services. Why create a different platform with, essentially, the same information? There are a few answers to this. From a cartographer’s perspective, a map is extremely powerful in representing the way that people understand the world, so Google’s ubiquity can be narrow inscape and dynamic. From a developer’s perspective, the data in companies like Google and Apple is under heavy copywriter and not freely accessible to the public. The inability to change the style or data of the maps can also be frustrating in design and functionality. Openstreetmap may be an unfinished and ever-growing product compared to Google Maps, but it’s a platform that is accessible to those who need it.
 
-	<br></br>
+<ul class='links'>
+    <ul>
+    <a class='link' href="postits/20112017.html">
+        <span class='pr2 gray'>20112017 | </span>
+        <span class='blue dim'>Git</span>
+    </a>
+    </ul>
 
-	When I first looked at openstreetmap, I was based in the San Francisco Bay Area and was fascinated at the detail of the map for that region. However, when I visited my home in San Diego, I was a little shocked to be staring back at an almost empty map. Aside from the roads, more or less accurate address markers and a few buildings, the map was totally blank. It’s been my current project to map a little bit of my childhood everyday. I’ll write a post soon about how to use openstreetmap, and so you can start mapping out your home.
+	<ul>
+	<a class='link' href="postits/17112017.html">
+        <span class='pr2 gray'>17112017 | </span>
+        <span class='blue dim'>Deque</span>
+    </a>
+    </ul>
 
-	<br></br>
+	<ul>
+	<a class='link' href="postits/12112017.html">
+        <span class='pr2 gray'>12112017 | </span>
+        <span class='blue dim'>Cartographic Thought</span>
+    </a>
+    </ul>
 
-    <b>November 21 2017.</b> Git is a useful tool for saving and sharing code. It’s purpose is to manage a project’s change over time. It does this by storing information in a data structure called a repository. 
+    <ul>
+    <a class='link' href="postits/11112017.html">
+        <span class='pr2 gray'>11112017 | </span>
+        <span class='blue dim'>Mapcination</span>
+    </a>
+    </ul>
 
-	<br></br>
+    <ul>
+    <a class='link' href="postits/10112017.html">
+        <span class='pr2 gray'>10112017 | </span>
+        <span class='blue dim'>Intro</span>
+    </a>
+    </ul>
+    
+    </class>	
 
-	Inside of the repository, or repo, there are sets of commit objects and heads that reference commit objects. The repository is saved in the same directory as the project itself, but it will not be seen in the folder. 
-
-	<br></br>
-
-	Commit objects contain files that reflect the state of a project at a given time, references to parent commit objects that are subsequent states of the project and an SHA1 name, a forty character string that identifies the commit object.
-
-	<br></br>
-
-	A head is a reference to s commit object. Repositories can have many heads, one being the <i>master</I> and one being <i>HEAD</i>, or current head you’re working on.
-
-	<br></br>
-
-	To create a repository, you’d run the following in the terminal.
-	<ol>mkdir [project name] //makes a new folder</ol>
-	<ol>cd [project] // puts you in that folder</ol>
-	<ol>git init //creates a .git directory in the [project] directory</ol>
-	<ol>git touch [file name . type] // makes a file, like file.txt</ol>
-
-	To create a commit, you’d run the following in the terminal.
-	<ol>git status // see which files have changed from current and <i>HEAD</i></ol>
-	<ol>// it breaks them down into: added files, new files that haven’t been added, modified files that haven’t been added</ol>
-	<ol>git add [file/s] // recursively tells git which files to include in the commit</ol>
-	<ol>git commit -m “[useful message]” // creates a commit object</ol>
-
-	If you’re stuck, try these too:
-	<ol>git rm [file] // works to remove anything you didn’t want added</ol>
-	<ol>git diff // compares the staging area, showing the difference between <i>HEAD</i> and current project state</ol>
-	<ol>git log // show all commits starting from <i>HEAD</i> to initial commit*</ol>
-
-	<ol>*git log has several more parameters, or features, to be examined with git log —help.</ol>
-
-	git commit -a automatically adds all modified files, but not new ones. This meaning that Git will include the previous version to the commit.
-
-	To push this onto GitHub, first create a new repository and get the URL.
-	<ol>git remote add origin [URL] // connect your repo to a remote server</ol>
-	<ol>git push origin [branch] // moves changes in <i>HEAD</I> to the remote repo</ol>
-
-	Branches allow you to develop features isolated from each other. You can take a copy of what you’re working on, add feature x, then merge it back to the master.
-
-	To create a new branch, you’d run the following in the terminal.
-	<ol>git checkout -b [branch name] // create new branch and switch to it</ol>
-	<ol>git push origin [branch name] // to push to the remote repository</ol>
-	<ol>git checkout master // to return to master branch</ol>
-
-	To collect changes from the remote repo’s newest commit to your local repository, run the following in the terminal.
-	<ol>git pull // to update to your working directory</ol>
-	<ol>git add [file/s] // to mitigate any merge conflicts, if needed*</ol>
-	<ol>git diff [source branch] [target branch] // optional, to preview for conflicts</ol>
-	<ol>git merge [branch] // to merge another branch into your active branch</ol>
-
-	<ol>*conflicts arise because git tries to auto-merge changes, which can sometimes result in conflicts between the files. These changes will need to be manually updated to some degree.</ol>
-
-	In case a mistake is made, you can replace local changes with the following.
-	<ol>git checkout — [file name] // replaces the changes in your working tree with the last content in <i>HEAD</I></ol>
-
-	Or, if you’d rather drop all your local changes and commits, you can fetch the latest history from the server and have it point to your local master branch with the following.
-	<ol>git fetch origin // to gather the files</ol>
-	<ol>git reset —hard origin/master // to reset your local</ol>
-
-	If you’re still feeling a but lost, here are some tricks.
-	<ol>gitk // to bring up a built-in GUI visualisation</ol>
-	<ol>git config color.ui true // because it can be hard to understand monotony </ol>
-	<ol>git config format.pretty oneline to // show logs with one line per commit</ol>
-	<i>code</i>
-	<br></br>
-   
-	<b>18 November 2017.</b> I’m a fan of the podcast 99% Invisible, and one of the episodes I listened to today was about maps from the voice of Rebecca Solnit. She’s an author with several writings about place and landscape, quite notably her atlas series: Infinite City Unfathomable City and Nonstop Metropolis. Her books describe are a collection of anecdotes and analysis of the city told through narratives and “old fashion” “old” cartography with beautiful illustrations. Solnit talks about how maps quite literally ground us. Her example is that she could tell you there were 99 murders in San Francisco, but with an actual map you can realise a lot: this is a place someone lost their life, this a place that you can go to bring flowers, this is a place you could have been during that time, this could have been you. The maps depict certain patterns as well. Most of the murders happen on the lower east side of the peninsula—why? Data visualisation can open up so many more questions and spatial interests than a simple declarative, “There were 99 murders in San Francisco.” Ask questions, be curious. You will figure it all out.<br></br>
-	Solnit says something beautiful in the podcast, but she doesn’t go into much detail. Just before an edited cut, she manages, “We all contain maps.” What does she mean? We all have mental maps stored in our head: how to get home, BART lines, the best food spots next to work, evening stroll routes, etc. But more critically, we all have spatial relationships and geo-contexts ingrained in our sense of place. We can feel certain ways about the atmosphere of a space or have fond memories of a childhood place. The important part is that we have a relationship to our surroundings and have developed an understanding of what it means to be where we are. And the incredible part is that every person has a different set of ideas and spatial relationships, therefore we all have different maps within us. This is a core idea of the Infinite City, that a city can be seen and lived through innumerable interpretations through thousands of people.<br></br>
-	The podcast narrator gives a succinct description of the power of maps. Maps are representations of reality, telling of the stories of discovery and exploitation, support imperialism and oppression, create boundaries and title cultures. My old Geography Professor Jake Kosek asked us religiously, “Who is has more power: the king or the cartographer? The king is powerful because he leads the army, but the king makes the decisions based off the cartographer’s map. So who is truly more powerful?” Maps are so powerful because the way we interpret them is how we conceive of the world that is beyond our local scale. Thus, a cartographer’s choices in representation are critical and exigent.<br></br>
-	Maps are beautiful, telling pieces that are incredible sources of context and power. The ability to see the world and its phenomenon on a digestible scale is a privilege, yet the best map readers are those who are curious and vigilant not only those who are directional and pragmatic.
-	<br><i>#cartographic-representation</I></br>	
-
-	<br></br>
-
-	<b>16-17 November 2017</b> CS 61B Project 1b, explained. This project is essentially to create an autograder similar to the one used by UC Berkeley CS. An autograder’s purpose is to grade students’ homework immediately, while giving out specific error messages to help them correct their code. The autograder works be using randomised testing and JUnit message generation. The autogravder is testing double ended ques, or deques for short.I’ve been working in this the past three or four days, here’s what I did. (To follow along, view the code on my GitHub.)
-
-	<ul><i>[TestArrayDeque1B.java]</i>
-	There’s only one test in this file called testArrayDeque. Because the autograder randomly tests, StdRandom.uniform() is called to pull a random double between 0 and 1. (The original ArrayDeque prints out the numbers that are are 0 through 9). The For Loop builds lists from student and solution. The Failure Sequence represents the operations that result in the Student Deque’s failure. The rest of the code goes through RemoveFirst and RemoveLast calls until the solution answer and the student answers are different. This test should fail every run because the StudentDeque file is wrong. How unsatisfying.</ul>
-
-	<ul><i>[Deque.java]</i>
-	The next step is to create a Deque interface with all the methods from ArrayDeque.java and LinkedListDeque.java in Project 1a, making it so that the implementor inherits the abstract methods. This is later implemented by ArrayDequeSolution.java.</ul>
-
-	<ul><i>[Palidrome.java]</i>
-	A palindrome is a work that is the same forwards as it is backwards, e.g. racecar. Because strings are immutable types, the wordToDeque method takes in a string and turns it into a deque. The isPalidrome method s a boolean, printing true if the word is a indeed a palindrome or false if not. It uses a helper method called reverseString. The helper method goes like this:
-	<ol>input: <i>“dog”</i></ol>
-	<ol>returns: <i>“og”</i> + “d”</ol>
-	<ol>returns: <i>“g”</i> + “d” + “o”</ol>
-	<ol> base case returns str: “god”</ol>
-	Once returned to the isPalodrome method, it tests to see if the reverseString is equal to the original input. The next method is an overriden equalChars. This is important because the following isPalidrome method tests the character quality of the characters in the word of the string. The For Loop here is a little tricky, as it’s going through the list forwards and backwards to see if the characters are the same. In example, it would check <i>n</i>oo<i>n</i>, then n<i>oo</i>n.</ul>
-
-	<ul><i>[OffByOne.java]</i>
-	This helps students determine how close they are. It determines if the the letters are off by one space. For example, ‘a’ and ‘b’ are one space away; however, ‘a’ and ‘d’ are multiple spaces away. The overridden equalChars method changes from x == y to x and y being one space away from each other. The isPalidrome method is the same as the second isPalidrome from Palindrome.java, except that it’s checking for it to be off by one from the overridden equalChars.</ul>
-
-	<ul><i>[OffByN.java]</i>
-	This is the same idea as OffByOne, but it tests for an Nth position instead.</ul>
-
-	And that’s it! More could be done by writing error messages with more context, but the beef of it is complete. Feel free to try to figure out how to write more useful error messages—best of luck!
-	<br><i>#code</i></br>
-
-	<br></br>
-
-    <b>15 November 2017.</b> Happy GIS Day! In celebration, I mapped a little bit more than usual on OpenStreetMap. When I moved to the Bay Area and learned about geospatial technology, I was privileged enough to be surrounded by others who were passionate about data visualisation. So when I came home, I was a little sad to see just how little of La Mesa was mapped and how much was outdated. Since, I’ve been mapping just a little bit of it everyday. My big, BIG goal for this is really just an abstract thought for now, but I’d love to make an app for Halloween where people can look for monsters. But there’s a lot of foreground to cover before that project even gets touched. Okay, back to mapping for now. Posts have been short these past couple of days because I’m working on this testing project that mimics Berkeley’s autograder. I’ll write a big post about that when I’m done :) 
-    <br><i>#GIS-Day</i></br>
-
-    <br></br>
-
-    <b>14 November 2017.</b> Sometimes, I want to (gently) shut my laptop and just give up. Those thoughts of, “I’m never going to get this”, “Why am I still trying this” and my personal favourite “What if I did something else with my life instead?” Sometimes, this sort of panic is a good jolt and healthy amount of pressure for me to put on myself. But for the past 4 hours I have been staring back and forth between the assignment details and my extremely barren code. I’m supposed to make unit tests, but I’m at the point where I’m just now understanding what parts of my code I’m even supposed to be testing. It’s frustrating, sometimes even heartbreaking. I don’t know what’s worse: your code failing the tests forever or just a blank void of a screen. Let me tell you that they’re both intimidating and discouraging, but this is the time to really start chugging. I scrapped everything. <i>ctrl+a, delete.</i> Done, gone. It’s time to start over. After I finish this self-pep talk, I’m going to write it out in plain English and worry about implementation later. It’s important that I can communicate (to myself especially for understanding purposes) what I’m doing exactly. I’m going to figure this out.
-    <br><i>#code</i></br>
-
-    <br></br>
-
-    <b>13 Nobember 2017.</b> My dog (pictured top right, named Tapatio) found the cat’s water bowl today. He stuck his head in and started to blow bubbles. Later in the day, I filled up his water bowl. He dunked his head in. He didn’t even open his mouth. 
-    <br><i>#weird-things-my-dogs-do</i></br>
-
-    <br></br>
-
-    <b>12 November 2017.</b> I want to talk about the process of map design today, primarily theoretically but also quite practically. A quintessential mistake of map readers is often the assumption that maps contain everything the way a photograph would. In no way should that fault be theirs, however. In reality, maps are a graphic representations and interpretations of the world. They are crafted through a process of selection and symbolisation. If a map were to have everything that a photograph does, it would be overwhelming and extremely cluttered, making it difficult to read and understand. If you’re wondering the importance of clarity and nothing is more clear to you than the captured reality of a photograph, think about navigation maps. While you’re driving, it’s incredibly important for maps to be succinct and fully understood at quick glances. Most people don’t stare at maps to try to understand their message, so we have to make the message explicit. Map design is a process 5 P’s of planning, perspective of data, presentation, proofreading and production. Instead of explaining each process, let me ask you some questions about each. This will be more beneficial as different purposed maps are going to ask different questions, but these questions will help guide you towards the questions you should be asking yourself.
-    <ul><i>Planning</i>. What am I going to map? Where does this phenomena occur? What’s the context? Who is the audience? Why am I mapping this? What would readers gain from looking at this? What story am I telling? What message is being understood?</ul>
-    <ul><i>Perspective of Data.</i> Where did this data come from? How did this source collect its data? Was the methodology sound and fair? What biases does this data show? How does this data tell a story? Why is this data important to someone else?</ul>
-    <ul><i>Presentation.</i> Do I want to make this map’s medium be print or web? What are the benefits of one over the other? Could it be both? What projection shows the least amount of distortion for this message? Is the data being conveyed with a certain bias? At what scale is the story most clear? What colours are intuitive to readers, coincide with the theme and look aesthetically pleasing? What symbolisations are intuitive to readers, coincide with the theme and look aesthetically pleasing? Is the weight of this map evenly distributed? Is the story still clear? How can it improve? Perhaps re-ask the planning questions once the presentation is drafted.</ul>
-    <ul><i>Proofreading.</i> Is this my best work? Are any symbols that look to similar? Does their size make them hard to read, or do they overlap any other important information? Are the boundaries clear? Does it need text to explain anything? Is it weighted well? Is the story clear? Is the story clear to someone else? Is citation present?</ul>
-    <ul><i>Production.</i> What context is surrounding this map? Does the story of the map and story of the context compliment each other? How could this map be produced? Do I have the copywriter information correct prior to release? Once placed in print or web, will the map keep the dimensions it was created with? If not, is there disruption in the legibility? Is this my best work?</ul>
-    Of course these lists of questions aren’t exhaustive, in many ways they’re to guide you to ask critical questions about your specific maps. A few of these concepts may seem more like social or philosophical context. I think that a lot of people making web maps now are trained more heavily in software or graphic design, and less in geography. Geography’s core themes are essential for creating the right context for your map. I’ll go into these more philosophical concepts later, like scale v. zoom. Never forget the basics!
-    <br><i>#cartographic-representation</i></br>
-
-    <br></br>    
-
-    <b>11 November 2017.</b> When I tell people that I'm fascinated by maps, they kind of look at me funny, like who could be so obsessed with Google's half capitalism-half geo-laved data maps--or even perhaps worse--Apple's awkward navigation stage? If you're familiar only with this navigation-based sort of map, keep on reading. There's serveral types of maps, ranging from napkin sketches to GIS analysis projects.
-    <ul>Mental Maps: These are the maps we use everyday. From getting around your apartment, to getting to work, to picking up milk on the way home. You just know your way around, it seems. You could sketch this out with a bunch of lines (likely not to scale) on your breakfast napkin explaining to a tourist how to get to the market.</ul>
-    <ul>Reference Maps: These are your navigation maps that tell you where you physically are or where you're trying to go. The ubiquitious Google and Apple Maps and transit maps are all reference maps. I actually find these maps the most interesting because they're taken to be the less biased maps, but there's a lot of decisions that go into cartography and with that a lot of power. More on this later. </ul>
-    <ul>Topographic Maps: These beauties inform people about the physical geography and geomorphology of a place. These are 3D representations of hills and topographic changes on 2D maps. Earth in your pocket.</ul>
-    <ul>Thematic Maps: These maps expose correlation of a phenomena and its spatial distribution. Basically, what are we looking and where are they. The first recognized GIS map is John Snow's map that correlated water wells and Cholera deaths.</ul>
-    <ul>Choropleth Maps: Areas on this map are typically shaded alonga gradient that is symbolic of the density of a phenomena. A common example are population maps.</ul>
-    <ul>Isarithmic Maps: Also commonly known as Heat Maps, these maps show the density of phenomena that is generally over an area. Typical Isarithmic maps are weather maps.</ul>
-    <ul>Dot Maps: These maps emphasise certain locations on a map. These can list places, as well as expose spatial densities. </ul>
-    <ul>Cartograms: These maps are especially visually interesting because land area is distorted by the density of a phenomena. The greater the density, the more surface area.</ul>
-    <ul>Art Maps: Maps are as much art as they are spatial intelligence and geometry. ARtistic maps can look a lot more like art than they do like maps, thus it takes careful observation to notice the direct these maps are going. (Sorry for such a bad pun, I sorta tried).</ul>
-    This incomplete list of maps is just a pixel of what more maps behold than getting somewhere. Maps are so much more about where you are. Maps tell you about a place, coming from a narrator. Maps are socially and culturally constructed as much as they are technogically. When looking at a map, ask questions and have constant vigilence.
-    <br><i>#cartographic-representation</i></br>
-
-     <br></br>
-
-    <b>10 November 2017. </b>For my third attempt at keeping a blog, here's what I intend to write about: data-visualization, cartographic-representation, coding and probably weird-things-my-dogs-do. Posts will be #tagged, but the tag may just be for ctrl+f functioning for now. Lasst uns anfangen.
-    <br></br>
-    I'm teaching myself how to code, and it is the most challenging and rewarding experience. I'm privileged to be in a university with such a developed EECS program and to be in a position to understand our system. With that, I've created this sort of quasi-virtual bootcamp for myself. Results are starting to show. My game plan is to go through the 61 series (structure and interpretation; data structures; computer architecture/machine structures) by the start of next term. This will give me a foundation of what computer science abstractly and somewhat practically as I struggle through the projects. So far, I'm a almost to the middle of my journey with a few more months to go. I've learned a lot about structure and writing coherent--not just functional--programs. Writing something that is humanly fathomable couldn't be stressed more. <i>Side note, coding alone is so hard and way less fun.</i> But anyway, when I return to Berkeley is when the gears really start moving. I'm going to audit a ton of CS courses, namely CS 160 UX Design, CS 161 Security, CS 162 Operating Systems, CS 164 Programming Languages, 169 Softwarre Engineering, CS 170 Algorithms and 186 Database Systems. That's twice the amount a computer science <i>major</i> would take. But hey, I'm being really, <i>really</i> ambituous here. And practically speaking, I'm not even trying to come out of this experience with godly coding skills. Instead, I want to learn about what there is to learn about--that sort of abstract knowledge to delve deeper and see what is even possible.
-    <br>#code</br>
     </p>
   </div>
 </div>
