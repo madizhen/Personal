@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>20 11 17</title>
+</head>
+<body>
+	 Git is a useful tool for saving and sharing code. It’s purpose is to manage a project’s change over time. It does this by storing information in a data structure called a repository. 
+
+	<br></br>
+
+	Inside of the repository, or repo, there are sets of commit objects and heads that reference commit objects. The repository is saved in the same directory as the project itself, but it will not be seen in the folder. 
+
+	<br></br>
+
+	Commit objects contain files that reflect the state of a project at a given time, references to parent commit objects that are subsequent states of the project and an SHA1 name, a forty character string that identifies the commit object.
+
+	<br></br>
+
+	A head is a reference to s commit object. Repositories can have many heads, one being the <i>master</I> and one being <i>HEAD</i>, or current head you’re working on.
+
+	<br></br>
+
+	To create a repository, you’d run the following in the terminal.
+	<ol>mkdir [project name] //makes a new folder</ol>
+	<ol>cd [project] // puts you in that folder</ol>
+	<ol>git init //creates a .git directory in the [project] directory</ol>
+	<ol>git touch [file name . type] // makes a file, like file.txt</ol>
+
+	To create a commit, you’d run the following in the terminal.
+	<ol>git status // see which files have changed from current and <i>HEAD</i></ol>
+	<ol>// it breaks them down into: added files, new files that haven’t been added, modified files that haven’t been added</ol>
+	<ol>git add [file/s] // recursively tells git which files to include in the commit</ol>
+	<ol>git commit -m “[useful message]” // creates a commit object</ol>
+
+	If you’re stuck, try these too:
+	<ol>git rm [file] // works to remove anything you didn’t want added</ol>
+	<ol>git diff // compares the staging area, showing the difference between <i>HEAD</i> and current project state</ol>
+	<ol>git log // show all commits starting from <i>HEAD</i> to initial commit*</ol>
+
+	<ol>*git log has several more parameters, or features, to be examined with git log —help.</ol>
+
+	git commit -a automatically adds all modified files, but not new ones. This meaning that Git will include the previous version to the commit.
+
+	To push this onto GitHub, first create a new repository and get the URL.
+	<ol>git remote add origin [URL] // connect your repo to a remote server</ol>
+	<ol>git push origin [branch] // moves changes in <i>HEAD</I> to the remote repo</ol>
+
+	Branches allow you to develop features isolated from each other. You can take a copy of what you’re working on, add feature x, then merge it back to the master.
+
+	To create a new branch, you’d run the following in the terminal.
+	<ol>git checkout -b [branch name] // create new branch and switch to it</ol>
+	<ol>git push origin [branch name] // to push to the remote repository</ol>
+	<ol>git checkout master // to return to master branch</ol>
+
+	To collect changes from the remote repo’s newest commit to your local repository, run the following in the terminal.
+	<ol>git pull // to update to your working directory</ol>
+	<ol>git add [file/s] // to mitigate any merge conflicts, if needed*</ol>
+	<ol>git diff [source branch] [target branch] // optional, to preview for conflicts</ol>
+	<ol>git merge [branch] // to merge another branch into your active branch</ol>
+
+	<ol>*conflicts arise because git tries to auto-merge changes, which can sometimes result in conflicts between the files. These changes will need to be manually updated to some degree.</ol>
+
+	In case a mistake is made, you can replace local changes with the following.
+	<ol>git checkout — [file name] // replaces the changes in your working tree with the last content in <i>HEAD</I></ol>
+
+	Or, if you’d rather drop all your local changes and commits, you can fetch the latest history from the server and have it point to your local master branch with the following.
+	<ol>git fetch origin // to gather the files</ol>
+	<ol>git reset —hard origin/master // to reset your local</ol>
+
+	If you’re still feeling a but lost, here are some tricks.
+	<ol>gitk // to bring up a built-in GUI visualisation</ol>
+	<ol>git config color.ui true // because it can be hard to understand monotony </ol>
+	<ol>git config format.pretty oneline to // show logs with one line per commit</ol>
+	<i>code</i>
+	<br></br>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>17 11 17</title>
+</head>
+<body>
+	CS 61B Project 1b, explained. This project is essentially to create an autograder similar to the one used by UC Berkeley CS. An autograder’s purpose is to grade students’ homework immediately, while giving out specific error messages to help them correct their code. The autograder works be using randomised testing and JUnit message generation. The autogravder is testing double ended ques, or deques for short.I’ve been working in this the past three or four days, here’s what I did. (To follow along, view the code on my GitHub.)
+
+	<ul><i>[TestArrayDeque1B.java]</i>
+	There’s only one test in this file called testArrayDeque. Because the autograder randomly tests, StdRandom.uniform() is called to pull a random double between 0 and 1. (The original ArrayDeque prints out the numbers that are are 0 through 9). The For Loop builds lists from student and solution. The Failure Sequence represents the operations that result in the Student Deque’s failure. The rest of the code goes through RemoveFirst and RemoveLast calls until the solution answer and the student answers are different. This test should fail every run because the StudentDeque file is wrong. How unsatisfying.</ul>
+
+	<ul><i>[Deque.java]</i>
+	The next step is to create a Deque interface with all the methods from ArrayDeque.java and LinkedListDeque.java in Project 1a, making it so that the implementor inherits the abstract methods. This is later implemented by ArrayDequeSolution.java.</ul>
+
+	<ul><i>[Palidrome.java]</i>
+	A palindrome is a work that is the same forwards as it is backwards, e.g. racecar. Because strings are immutable types, the wordToDeque method takes in a string and turns it into a deque. The isPalidrome method s a boolean, printing true if the word is a indeed a palindrome or false if not. It uses a helper method called reverseString. The helper method goes like this:
+	<ol>input: <i>“dog”</i></ol>
+	<ol>returns: <i>“og”</i> + “d”</ol>
+	<ol>returns: <i>“g”</i> + “d” + “o”</ol>
+	<ol> base case returns str: “god”</ol>
+	Once returned to the isPalodrome method, it tests to see if the reverseString is equal to the original input. The next method is an overriden equalChars. This is important because the following isPalidrome method tests the character quality of the characters in the word of the string. The For Loop here is a little tricky, as it’s going through the list forwards and backwards to see if the characters are the same. In example, it would check <i>n</i>oo<i>n</i>, then n<i>oo</i>n.</ul>
+
+	<ul><i>[OffByOne.java]</i>
+	This helps students determine how close they are. It determines if the the letters are off by one space. For example, ‘a’ and ‘b’ are one space away; however, ‘a’ and ‘d’ are multiple spaces away. The overridden equalChars method changes from x == y to x and y being one space away from each other. The isPalidrome method is the same as the second isPalidrome from Palindrome.java, except that it’s checking for it to be off by one from the overridden equalChars.</ul>
+
+	<ul><i>[OffByN.java]</i>
+	This is the same idea as OffByOne, but it tests for an Nth position instead.</ul>
+
+	And that’s it! More could be done by writing error messages with more context, but the beef of it is complete. Feel free to try to figure out how to write more useful error messages—best of luck!
+	<br><i>#code</i></br>
+
+</body>
+</html>
