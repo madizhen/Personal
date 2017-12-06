@@ -4,11 +4,11 @@
 @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
 body {
-	text-align: center;
-	color: white;
-	font-family: 'Source Sans Pro', sans-serif;
+	text-align: justify;
+	color: black;
+	font-family: 'palatino', sans-serif;
 	margin-top:3%;
-	padding-bottom:20px;
+	padding:100px 100px 100px 100px;
 	background-color: white;
 	background-image: url('../things/crossword.png');
 	background-repeat: repeat;
@@ -25,7 +25,7 @@ h1 {
 
 a:link, a:visited {
 	text-decoration: none;
-    color: #ddffff;
+    color: #5f94f0;
 } a:hover {
     text-decoration: underline;
 }
