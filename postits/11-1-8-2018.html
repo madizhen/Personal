@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>11</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	I started learning how to use the JavaScript library jQuery a couple days ago. It's a mature package that allows a programmer to add interactivity to webpages, respond to user interactions, make AJAX requests and make DOM programming easier all without being verbose. The motto is even something like, <i>Do more, write less</i>. It's popularity grew in the early 2000's when browsers were less standardised. jQuery is used to access the DOM (Document Object Model) by selecting CSS selectors to select HTML elements and do something with them.
+
+	<br></br>
+
+	Let's do a small alert piece with jQuery. Assume this is linked to an HTML script that has a red button. This alert message is first hidden from view, then it slides down in one second, remains to be red for three seconds and then disappears from view.
+	
+	<br></br>
+
+	<code>
+	$('#alert').hide(); <br>
+	$('#alert').slideDown(1000); //written in milleseconds <br>
+	$('#alert').delay(3000);<br>
+	$('#alert').slideUp<br>
+	</code>
+
+	<br></br>
+
+	Which can also be written as:
+
+	<br></br>
+
+	<code>
+	$('#alert').hide().slideDown(1000).delay(3000).slideUp
+	</code>
+
+	<br></br>
+
+	The latter is actually a better way to write this because it avoids having to find and select #alert every time and will save a few bits as well because theer are less pointers and returns being called for each #alert selection. Like I said, I just started learning the components of jQuery, but I'll try to have a post soon that is more of an interactive piece. I'll try!
+	
+
+</body>
+</html>
