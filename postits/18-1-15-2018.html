@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>17</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	Asynchronous JavaScript and XML, or AJAX for short, allows you to update the HTML on a page without having the reload the page. This is extremely useful because it increases the speed of loading and therefore raising the instant gratification levels of users. AJAX is able to do this because it updates only parts of the page. For example, when scrolling around a slippy map, different parts of the map are loading, but the user remains on one, unchanged web page. AJAX asks for information from a web server, then the web server returns data to the browser that selectively changes parts of the web page. 
+
+	<br></br>
+
+	To initialise AJAX, create an XMLHTTP Request object by writing <code>var x = new XMLHttpRequest();</code>. Then, you'd create a function that is best suited for your program, perhaps including error handling and communicating with users. When opening a request, you would use either <code>'GET'</code> if you're retrieving data or <code>'POST'</code> if you want data to be saved or secured. Finally, you send your request with <code>x.send()</code>. 
+
+	<br></br>
+
+	Although it's possible to use AJAX with long-hand DOM writing, it's typically a much smoother process using jQuery. Aside from just the explicit differences, there are also methods built into jQuery, like using <code> $.each</code> instead of a for loop that would have to continuously iterate, that can make everything faster. There's also a special <code>$.ajax(url, settings)</code> method that has less limitations. The <code>settings</code> argument is a JavaScript object containing one or more key volume pairs that sets options of the request for more flexibility.
+
+	<br></br>
+
+	Although the "X" in AJAX stands for XML, JavaScript can better process JSON data. JSON files are plain text arrays that can be easily looped over and processed by 
+	JavaScript. GeoJSON files, as mentioned earlier, are a specific type of file and attribute collection for spatial data.
+
+</body>
+</html>
