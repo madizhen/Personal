@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>26</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	When designing a program, there are specific assumptions that are made about the arguments or some condition, content and return value, which may lead to security breeches. 
+
+	<br></br>
+
+	To approach this problem, consider addressing the assumptions immediately. The precondition for a function is an assertion that must hold about the inputs to the function, for the code assumes the condition has been met to safely execute. For example, assume you are adding to an array for the size of its length. You are already assuming that the array is not null and that the size you are adding does not exceed the size of the array already. 
+
+	<br></br>
+
+	The postcondition on a function is an assertion that holds truthfully when the function returns. For example, say you have a method that returns a pointer. The post condition to your method is that the pointer is pointing to something that is at least n bytes of memory and it isn't <code>null</code>. A function that has met both the precondition and the postcondition has specification. Implementation is when the precondition is satisfied, therefore the postcondition is also satisfied. In order to test that the function has successfully truthful preconditions and postconditions, the postcondition ought to simple the precondition of the following statement.
+
+	<br></br>
+
+	Now that the code is more secure, how can we implement security through the entire OS? There are three main properties of security: confidentiality, integrity and availability. All three of those concepts of who has the ability to see and/or edit files is handled within access control implementation, which specifically allows and limits who can access resources (files, web pages, etc) that are sensitive. Access control involves a Subject (user who is accessing resources), an Object (a resource to be accessed) and a Policy (restrictions enforced).
+	<code><br></br>
+	access(subject, object) = true //if subject is allowed to access the object<br>
+	access(Jane, janes_email) = true //Jane can view her account<br>
+	access(Jane, janes_email) = {read, send} //Jane can read and send emails from her account<br>
+	access(Jane, kevins_email) = false //But not Kevin's<br>
+	access(Jane, kevins_email) = {} //Jane can't see Kevin's email
+	</code></br></br>
+	The decisions made with access control is authorisation and authentication. Authorisation determines who should be able to perform which actions, while authentication verifies who is requesting the action. As users scale upwards, keeping an accurate log, or audit, is important to have accumulating. When breeches occur, it is just as important to uphold accountability and hold people legally responsible for any detrimental actions.
+</body>
+</html>
