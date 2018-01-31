@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>33</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	<i>Disclaimer: I've only sat through one lecture on cryptography, but this is so cool that I have to try to synthesise it.</i>
+
+	 <br></br>
+
+	 Formally, the definition of cryptography is to provide formal guarantees in the presence of an attacker. Its Latin roots are <i>crypt</i>, meaning secret, and <i>graphia</i>, meaning message. Altogether, the literal heritage of cryptography is "secret message." Fair enough, as the premise of modern day cryptography focuses on the security of communications within an insecure network. There are three main guides to check for: confidentiality (preventing an attacker from reading), integrity (prevent an attacker from altering) and authenticity (confirming the data is coming from the correct source). Cryptography largely involves the study, analysis and techniques for secure communication in the presence of adversaries (attackers). Kerchoff's Principle--briefly, it's assumed that the attacker knows the algorithm but not the key--still holds rigidly. 
+
+	 <br></br>
+
+	 That said, in Symmetric Key Cryptography, the single key is only known to the involved patrons, Alice and Bob. When Alice sends a message, it is encrypted with a key. When delivered to Bob, he is able to decrypt the message using the same key. Written out, this process reads: <code>Enc(K, M) --> C</code> where <code>Enc</code> is encrypted, <code>K</code> is the key generation, <code>M</code> is the message</code> and <code>C</code> is the ciphertext that the original message was encrypted as. This provides confidentiality because an attacker (without the key) will be unable to read the messages. This is crucial in making ciphertext actually work, for the attacker should be be unable to learn any function of M other or learn any partial information about the message other than its key length. If the attacker knew partial information about the message, then the attacker would be able to distinguish the messages. There are limitations to this method: (1) it can only be used once because if continually using the same key, then it becomes too insecure, and (2) the attacker can infer the message can't be longer than the length of the key. The latter is particularly important when sending over larger files (> 1TB), like a movie or other media.
+
+	 <br></br>
+
+	 The One Time Pad is another encryption scheme which could be applied to the following situation. Alice and Bob share an n-bit secret key where the bits have been selected at random. The encryption should produce: (1) a scrambled message <i>M=m1...mn</i> to be mapped to a ciphertext <i>C = c1...cn</i>, (2) given knowledge of the secret key for converting <i>C</i> to original message <i>M</i> and (3) that the attacker should gather no information about M except for inferences about the length. One Time Pad encryption can be expressed as: <i>cj = mj ⊕kj</i>. Similarly, decryption can be expressed as: <i>mj = cj ⊕ kj</i>. If Alice were to send two messages <i>M0</i> and <i>M1</i>, then the attacker has a 1/2 chance at guessing which ciphertext it belongs to. As the name suggests, the One Time Pad can only be used one time, or else the attacker will be able to distinguish the messages. If the same key is used to transmit but <i>M</i> and <i>M`</i>, then the attacker can take the two ciphertexts where <i>C = M ⊕ K</i> and <i>C` = M` ⊕ K</i> to obtain <i>C ⊕ C` = M ⊕ M`</i>. Even if the attacker does know know <i>M</i> or <i>M`</i>, there is typically enough redundancy in messages where knowing <i>M ⊕ M`</i> is enough to recover a majority of <i>M</i> and <i>M`</i>.
+
+</body>
+</html> 
