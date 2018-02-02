@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>35</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	In symmetric encryption schemes, the two patrons--Alice and Bob--share a single key that can be reused to securely transmit messages. The Block Cipher is crux in implementing this scheme. Alice and Bob's messages are encrypted by a k-bit random key into an n-bit ciphertext. Written out, it looks like <i>E(sub K)(M) = E(K, M)</i>, where <i>E</i> is encryption, <i>K</i> is key and <i>M</i> refers to the message. "E(sub K) is required to be a permutation on the n-bit strings, in other words, it must be an invertible (bijective) function" (Ada Popa). In order for Alice and Bob to decrypt each other's messages, the following equation reverse s the encryption: <i>D(sub K)(E(sub K)(M)) = M</i>, where <i>D</i> refers to decryption. 
+
+	A subset of Rijndael called the Advanced Encryption Standard (AES) is an example of a block cipher. It uses a block length of n = 128 bits and a key length of either k = 128, 192 or 356 bit keys. In this algorithm, a plaintext would go through 13 or 14 cycles of repetition of scrambling, as follows: Plaintext > AddRoundKey > SubBytes > ShiftRows > MixColumns > AddRoundKey > SubBytes > ShiftRows > AddRoundKey > Ciphertext. To decrypt, the process changes to: Ciphertext > AddRoundKey > InvShiftRows > InvSubBytes > AddRoundKey > InvShiftRows > InvSubBytes > AddRoundKey > Plaintext. As lengthy as this process is, it was actually designed with speed in software and hardware in mind. It's an incredibly strong algorithm that has stood the test of time (and a lot of testing against it). So far, the best practical form of attack is the exhaustive key search, which would take the world's fastest and strongest super computers before the dawn of time to get a semi-intelligible plaintext. AES requires 2^127 computations on average (^128 worst case).
+
+	I'll go into how this works a little bit more tomorrow. There's some things I have to work out first.
+
+</body>
+</html> 
