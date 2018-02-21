@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>54</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	When people think of cybersecurity, one of the first anxieties is a person's passwords to their various personal accounts. But how do these passwords take place? Let's start by first knowing how a system reads a password. Rarely will a system read it as plaintext, instead it is usually encrypted in some way that produces a hash as an extra level of protection against attackers. However, attackers have figured ways around this. They can create algorithms that act as a stream of online guessing attacks, called a <b>Dictionary Hack</b>. Attackers produce an exhaustive list of passwords to send through the same hash generating password verification. Defenses against this particular attack include: rate-limiting (limiting the amount of times a password can be attempted before lockout and notification), captcha requirements to prove password input is not from a robot (though robots are gaining significant traction here) and password requirements that expand the algorithm's alphabet set of character library. Another infamous attack comes from <b>Client-Side Malware</b>, which typically comes from unintentionally downloaded files. The simplest way to evade this on the client side is to refrain from downloading anything from untrusted sites. Be sure to have up-to-date security software installed as well. Another client-side preventative measure involves setting up a two-factor authentication for logging in. Another way for information to leak is if the database of the host <b>server is compromised</b>. Ways to evade this on the server-side include not storing information as plaintext, instead consider <code>hash(information, salt)</code>. The salt is a another layer of protection for individual users. If the information is only encrypted with a single hash for all clients, then an attacker may find it easy to attack all clients once the hash has been figured out. Therefore, it's by far safer to have different salts for different users. The server side can also delay hash time, <code>hash(hash(hash(...(hash(x, salt)))))</code>. There is, however, a tension with this delay between the user and the attacker. The longer the wait period, the worse it will be for the attacker and the more miserable for the user. Luckily, in a Dictionary Hack with hundreds of thousands of passwords to try, setting a delay of a few seconds should be long enough to discourage and detract attackers. 
+
+	<br></br>
+
+	Now that we've conceptually reviewed client and server attack types, we'll discuss their implementation between two parties tomorrow!
+
+</body>
+</html> 
