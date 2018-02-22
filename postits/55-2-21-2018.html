@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>50</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+	
+	I completed my first game on Unity! The <a href="https://berkeley.box.com/s/y0hz0pjs4lknb2u2uexyory60jtgn70v">game</a> is rather simple; the player takes on the roll of a frog who's objective is to eat as many flies as possible and not get eaten by the bird. While this sounds elementary, the process of game design is quite complex. I did not create this game from scratch, so I can't go in too deeply about the storyboarding process and art creation, but I can elaborate extensively on details in the grand scheme. This will be a multi-part tutorial on how to create the game.
+
+	<br></br>
+
+	Part I: Getting Started
+	<br>
+	<i>Getting started, Camera orientation and Image Effects</i>
+
+	<br></br>
+
+	Anyone will tell you that the hardest part of anything is simply starting. Unity, like any software, abides by this rule of thumb too. Firstly, you'll have to download Unity <a href="https://unity3d.com/get-unity/download">here</a>. I would recommend getting the most up-to-date version, but not the beta tester. Once you've gone through their tutorials, you'll also have to download and unzip <a href="https://berkeley.box.com/s/y1wpf4bdbi68sbddivvlenz7o0yh8ugq">these</a> project files. Now that you have everything downloaded, start up Unity and select Open > frogs and press Open. You'll be brought to a mostly grey and blank looking screen. Welcome to Unity!
+
+	<br></br>
+
+	Let's first orient the camera so we can see what we're doing in the game. You can adjust your view manually by zooming in and out. The view can be set either by code or manual adjustments on the object directly. Let's start off with the latter. On the left of your screen you'll see a Hierarchy pane and theMain Camera object. Select the Main Camera object on the left-side and on the ride side in the Inspector pane, you'll see attributes for the Main Camera. Frogs is going to be played in a Top-Down Orientation, meaning that the perspective in which the player is viewing the game is from above the player's sprite. To orient the camera for this, set Y=5 and Z=-1.5. For the rotation, set X=60 and leave Y=0 and X=0. Next, the Far Clipping Plane controls how far out a game landscape is visible. Remember the further out this is the more the game will render and the slower it will be. Frogs doesn't require that much but we also don't want the terrain to disappear when zooming out, so you can appropriately set Far Clipping Plane to 100. That's all you'll need for now! Save your scene and continue.
+
+	<br></br>
+
+	Next, let's place something in our scene. To do this, look at the bottom of Unity's interface and select the Project tab. From here, double click on Prefabs, then drag the Player into the any blank spot on the hierarchy pane. Let's now recollect the camera for a better perspective. At the top middle of Unity, you'll see tabs that read "Scene", "Game" and "Asset Store". Hit the "Game" tab if you haven't done so already. If this looks puzzling right now, don't worry. You're doing great! Let's now adjust the camera's view to something more conceivable. While we could adjust this in the Scene tab/view, it's more precise in the Main Camera Object. Please make X=0, Y=5 and Z=-1.5. For the rotation, set X=60, Y=0 and Z=0. You should now see a close-up of the frog!
+
+	<br></br>
+
+	The final piece we'll cover today is image effects, which are script components that can be applied to the camera to change how the camera renders the scene. It can also alter colors and create 2D effects (think Instagram filters). To access these, go to the Assets Store tab at the top (alternatively Window > Assets Store) and search for "Post Processing Stack." You should see a free package from Unity. This is a collection of common effects bundled together for ease of use--thanks Unity! Go ahead and download it. Once completed, in the bottom right click import to add. Once these steps are completed, return to the Game view and go to the Project Window. You should see a folder that says PostProcessing. Now, click on the Main Camera and go to its Inspector pane. Hit "Add Component," search PostProcessing and add it to the camera. (If you don't see it, save your scene and restart Unity). In the empty field labeled Profile, drop in the post processing file. Next, in the Project window, select the Prefabs folder and right click in any blank space. Choose "Create" > "Post Processing Profile" and name it what you'd like. Return to Hierarchy pane and select Main Camera. Drag the post processing effect you just named over to the Profile field. Select the profile you created in the Project pane to view its Inspector. Check the ColorGrading box and expand it. Change the tone mapper to filmic for a richer, darker texture. If this seems too dark, adjust the Post Exposure up to around 1.8. To increase the saturation, adjust it to 1.7. That's it for colour adjusting. Go towards the top of the pain and you can view a drop down menu to choose between different image quality settings, go ahead and choose high quality. Don't forget to save your scene!
+
+	<br></br>
+
+	Good job on getting this far! I know it's a totally new environment and ton of new things to learn. But that really makes it all the more exciting! Stay tuned for the next part of this mini-series!
+</body>
+</html> 
