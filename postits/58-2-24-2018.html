@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>56</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+
+	Part IV <br>
+	<i>Score Text and Scripting, Enemy Creation and Scripting</i>
+
+	<br></br>
+	Our first goal is going to be adding a score to the screen. First add a Text element in the hierarchy pane. The text is already on the screen, but you can't see it! Change the colour and size of the score text in the Text's Inspector. If you're unsure, I recommend 400x300. The text is awkwardly in the center of the game, so move it to a corner of your choosing and justify and space it appropriately.
+
+	<br></br>
+	
+	Adding a score is useful in any game because it indicates the player's progress. To do so in this game, first add a <code>ScoreCounter</code> script and add it to your Scripts folder. You'll need to add <code>using UnityEngine.UI</code> at the top to use the library. To script the score counter, add a private variable for the class. Then, in the Start method, initialise the score to be 0. In the Update method, access the text component to add to the counter. Don't forget to add <code>" flies"</code>. To update the score, you'll update it in the <code>FlyPickups</code> script. Once you have this completed, your score counter will be displayed and incrementally increased as you catch flies.
+
+	<br></br>
+
+	Let's make the game more challenging by adding an enemy, the bird. First, add the Bird Prefab as you have done so earlier with the Fly and Player (frog). We ought to consider that it must also obey the laws of physics and the borders of the game scene. This is a little tricky to figure out on your own, so while Environment is selected in the Hierarchy, go to Window > Navigation > Bake and change Agent Radius to 1, Agent Height to 4 and Step Height to 3. This makes it so the Bird and Frog cannot go outside of the environment's visual boundaries. Now, go to Bird in your Hierarchy pane and add a new script called <code>BirdMovement</code>. When scripting the bird, consider its target (Player), the Navigation Mesh, and its own animation. In the Start method, it will need to be initalised. In the Update method, it will constantly be chasing the Player. This should also consider the velocity of the player, so the bird's velocity is adjacent.
+
+</body>
+</html> 
