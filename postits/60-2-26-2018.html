@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>60</title>
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+	
+	Part V <br>
+	<i>Game State, Audio (sorta)</i>
+
+	<br></br>
+
+	This is getting quite long - sorry! But I guess that shows how involved the process of constructing a game is. I realise I didn't comment on the importance of game features nearly as much as I initially intended, but that's okay! I think I'd rather make a separate post for that anyway, as the information and directions of this series has been enough to make your head spin. Be on the look out for this post's postmortem.
+
+	<br></br>
+
+	Continuing in the same script as the one you have for the game state, let's now create a start and end of the game. To begin first ask yourself if starting and ending game functionality should be in the Start or Update function. Once you have that determined, ask how you will oscillate between the two. Before you write the methods for starting and ending the game, list out all of the differences between the two and what functionality you want them to have. For starting the game, it might be useful to allow movements. For ending the game, it would be useful to notify the player the game is over and disable further movements.
+
+	<br></br>
+
+	We decided earlier that the game will begin once a player presses the spacebar. This can be tricky. So, I recommend when calling the method that will start the game, add this conditional by typing the following: <code>Input.GetKeyUp (KeyCode.Space)</code>. This code is essentially looking to see if the spacebar has been pressed down and has come back up. This is significant because it will only take one key press to start the game, and ignore further presses the player may incur. Before scripting a function to end the game, list out the functionality you think you'll need. I recommend considering a way to restart the game (instead of having to restart the whole program!).
+
+	<br></br>
+
+	Audio is quite complex to explain without visuals or audio samples, so my best recommendation is to tell you to put all the sounds in the same mixer and test them out to your own pleasing. 
+
+	<br></br>
+
+	Congratulations! You've finished the project! Or, at the very least, you now know how to approach the project and are ready to get started on your own. I hope you found some use from this series, and I'll look into writing some simpler project tutorials soon. Thanks again for reading this far and trying your best!
+
+	<br></br>
+
+	<i>Finish the project and wanna show it off? Have questions? Have troubles? Don't wanna read all this and just want me to talk you through it via FaceTime? Anything else at all? Contact me, and we'll figure out something!</i>
+
+</body>
+</html> 
