@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' /> <!-- What character alphabet the computer can expect to read. -->
+        <title>Router</title> <!-- This will appear as the name on the page tab. -->
+        <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' /> <!-- Actually don't worry -->
+
+        <!-- These links load Mapbox GL JS to this document. -->
+        <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+
+        <!-- This link loads the JavaScript Library jQuery, which allows DOM (Document object model) transversal. -->
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+        <!-- This is in-HTML line scripting of CSS, or cascade style sheets. These sheets can be written inside of HTML like this between <script> tags, or they can be linked outside of HTML documents using <script src='style.css'></script>. Everything between this <script> tag is CSS. --> 
+        <style>
+            /* This styles everything in the body tags. */
+            body { 
+                /* No spacing */
+                margin:0;
+                padding:0;
+            }
+
+            /* This styles the map class. */
+            #map { 
+                position:absolute; /* Positioned relative to its first positioned (not static) ancestor element. */
+                /* No spacing, so the map will take up the entire page. */
+                top:0;
+                bottom:0;
+                width:100%;
+            }
+
+            /* This styles the instructions class. */
+            #instructions {
+                position:absolute;
+                margin:20px; /* px is short for pixel. */
+                width: 25%; /* The percentage is relative to the page. */
+                top:0;
+                bottom:0;
+                padding: 20px;
+                background-color: rgba(255,255,255,0.9); /* This is the RGBA colour code. */
+                overflow-y: scroll;
+                font-family: sans-serif;
+            }
+        </style>
+  </head>
+
+  <body>
+    <!-- Creates a div (think like a physical bin) that can be referenced with the word "map" -->
+    <div id='map'></div>
+
+    <!-- Creates a div (think like a physical bin) that can be referenced with the word "instructions" -->
+    <div id='instructions'></div>
+
+    <!-- Initiates JavaScript code. Everything between this <script> tag is JavaScript. -->
+    <script>
+
+        /* Replace with your Mapbox Access Token */
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZXhhbXBsZXMiLCJhIjoiY2lqbmpqazdlMDBsdnRva284cWd3bm11byJ9.V6Hg2oYJwMAxeoR9GEzkAA';
+
+        /* This creates a new Map called "map" */
+        var map = new mapboxgl.Map({
+          container: 'map', /* Contianer ID */
+          style: 'mapbox://styles/mapbox/streets-v9', /* This style can be replaced as you see fit. */
+          center: [-84.52,39.12], /* When the new lap is initiated, these are the [lat, long] coordinates that it will be at. */
+          zoom: 12 /* When the new map is initiated, this is is the zoom level that it will be out. */
+        });
+
+        /* On the "map" object, load the given function. */
+        map.on('load', function(){
+          getRoute();
+        });
+
+        /* The function just above is defined here. The purpose of this function is that it's pulling the route based
+         * off of given coordinates and Mapbox's Directions API. */
+        function getRoute() {
+          var start = [-84.518641, 39.134270]; /* This is the route's starting coordinates. */
+          var end = [-84.512023, 39.102779]; /* This is the route's starting coordinates. */
+          /* This is declaration is storing Mapbox's Directions API, start's first coordinate, starts second coordinate, end's first coordinate, end's second coordiante, a reference to their navigation access and finally your access token. */
+          var directionsRequest = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
+          
+        /* If you're unfamiliar with jQuery and AJAX, here's a crash course! jQuery is a JavaScript Library 
+         * pre-written code) designed to make it easier to navigate a document, select DOM elements, develop Ajax
+         * applications and more. AJAX is short for Asynchronous JavaScript and XML, which is a set of web
+         * development techniques used on the client side for asynchronous web apps. Asynchronous means that data can
+         * be sent and received in the background without interfering with or slowing down the current display of a
+         * page. If that is boggling, I recommend learning some JavaScript fundamentals before looking up jQuery or
+         * AJAX. */
+          $.ajax({ /* The $ is shorthand for using the jQuery library. jQuery.### == $.### */
+            method: 'GET', /* Data is being received... */
+            url: directionsRequest,  /* ... from this location. */
+          }).done(function(data){ /* Once that is completed, run the received information (data) through this function. */
+            var route = data.routes[0].geometry;
+            map.addLayer({ /* These features are necessary identifying the route... */ 
+              id: 'route', /* ... to be a route ... */
+              type: 'line', /* ... that is linear. */
+              source: { /* The route info can be accessed through... */
+                type: 'geojson', /* ... a GeoJSON file format. Think of it like an address book. The 'FeatureCollection' tells you there are attributes. Then each {contact} tells you its type, it's address or 'geometry' and its properties or letter contents. */
+                data: { /* This is the expected format of the data. */
+                  type: 'Feature', 
+                  geometry: route
+                }
+              },
+              /* This makes the route visible by allocating a width to it. */
+              paint: {
+                'line-width': 2
+              }
+            });
+
+            /* These next two add starting and stopping indicators to the map. */
+            map.addLayer({
+              id: 'start', /* This is the bin it belongs to. */
+              type: 'circle', /* This is the shape it will be. */
+              source: { /* This is where it gets the data for where to put the dot. The format is the same as above. */
+                type: 'geojson',
+                data: { 
+                  type: 'Feature', 
+                  geometry: {
+                    type: 'Point',
+                    coordinates: start
+                  }
+                }
+              }
+            });
+            /* This is the same as above, but with the end of route. */
+            map.addLayer({
+              id: 'end',
+              type: 'circle',
+              source: {
+                type: 'geojson',
+                data: { 
+                  type: 'Feature', 
+                  geometry: {
+                    type: 'Point',
+                    coordinates: end
+                  }
+                }
+              }
+            });
+
+            /* This loads the instructions on the left side. It's loaded last so it's above the map. */
+            var instructions = document.getElementById('instructions'); /* This is using jQuery to select the "instructions." The steps are going inside of this bin. */
+
+            /* This collects the steps of the route. */
+            var steps = data.routes[0].legs[0].steps;
+            steps.forEach(function(step){ /* This can be read as: For each step, perform this function on the step. */
+                /* With each step, insert it into the instructions bin with HTML <p> tags. This formatting helps
+                 * legibility by separating each step. */
+                instructions.insertAdjacentHTML('beforeend', '<p>' + step.maneuver.instruction + '</p>');
+            });
+          });
+        }
+
+    </script>
+
+  </body>
+</html>
