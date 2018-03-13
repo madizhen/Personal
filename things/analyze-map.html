@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' /> <!-- What character alphabet the computer can expect to read. -->
+    <title>Analyze</title><!-- This will appear as the name on the page tab. -->
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' /> <!-- Actually don't worry -->
+
+    <!-- These links load Mapbox GL JS to this document. -->
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- This link loads Turf.js to this document. Turf.js is a JavaScript library for spatial analysis. There are spatial operations, GeoJSON data helper functions, and other statistical tools. -->
+    <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>  
+
+    <!-- This is in-HTML line scripting of CSS, or cascade style sheets. These sheets can be written inside of HTML like this between <script> tags, or they can be linked outside of HTML documents using <script src='style.css'></script>. Everything between this <script> tag is CSS. --> 
+    <style>
+    	/* This styles everything in the body tags. */
+		body {
+			/* No spacing, only the map will cover the page */
+			margin: 0;
+			padding: 0;
+		}
+
+		/* This styles the map class. */
+		#map {
+			position: absolute; /* Positioned relative to its first positioned (not static) ancestor element. */
+            /* No spacing, so the map will take up the entire page. */
+			top: 0;
+			bottom: 0;
+			width: 100%;
+		}
+    </style>
+</head>
+
+<body>
+<!-- Creates a div (think like a physical bin) that can be referenced with the word "map" -->
+<div id='map'></div>
+
+ <!-- Initiates JavaScript code. Everything between this <script> tag is JavaScript. -->
+<script>
+	/* Replace with your Mapbox Access Token */
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWFkaXpoZW4iLCJhIjoiY2lzbTViZ2ozMDAyejJ5bzFxaXB0MXN2eCJ9.YVS0Rlj7IjNHireL_ysr6w';
+	
+	/* This creates a new Map called "map" */
+	var map = new mapboxgl.Map({
+		container: 'map', /* Container ID */
+		style: 'mapbox://styles/mapbox/light-v9', /* This style can be replaced as you see fit. */
+		center: [-84.5, 38.05], /* When the new lap is initiated, these are the [lat, long] coordinates that it will be at. */
+		zoom: 11 /* When the new map is initiated, this is is the zoom level that it will be at. */
+	});
+
+	/* This creates an inline geoJSON. Think of it like an address book. The 'FeatureCollection' tells you there
+	* are attributes. Then each {contact} tells you its type, it's address or 'geometry' and its properties or
+	* letter contents. */
+	var hospitals = {
+	  type: 'FeatureCollection',
+  	  features: [
+        { type: 'Feature', properties: { Name: 'VA Medical Center -- Leestown Division', Address: '2250 Leestown Rd' }, geometry: { type: 'Point', coordinates: [-84.539487, 38.072916] } },
+	    { type: 'Feature', properties: { Name: 'St. Joseph East', Address: '150 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-84.440434, 37.998757] } },
+	    { type: 'Feature', properties: { Name: 'Central Baptist Hospital', Address: '1740 Nicholasville Rd' }, geometry: { type: 'Point', coordinates: [-84.512283, 38.018918] } },
+	    { type: 'Feature', properties: { Name: 'VA Medical Center -- Cooper Dr Division', Address: '1101 Veterans Dr' }, geometry: { type: 'Point', coordinates: [-84.506483, 38.02972] } },
+	    { type: 'Feature', properties: { Name: 'Shriners Hospital for Children', Address: '1900 Richmond Rd' }, geometry: { type: 'Point', coordinates: [-84.472941, 38.022564] } },
+	    { type: 'Feature', properties: { Name: 'Eastern State Hospital', Address: '627 W Fourth St' }, geometry: { type: 'Point', coordinates: [-84.498816, 38.060791] } },
+	    { type: 'Feature', properties: { Name: 'Cardinal Hill Rehabilitation Hospital', Address: '2050 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-84.54212, 38.046568] } },
+	    { type: 'Feature', properties: { Name: 'St. Joseph Hospital', Address: '1 St Joseph Dr' }, geometry: { type: 'Point', coordinates: [-84.523636, 38.032475] } },
+	    { type: 'Feature', properties: { Name: 'UK Healthcare Good Samaritan Hospital', Address: '310 S Limestone' }, geometry: { type: 'Point', coordinates: [-84.501222, 38.042123] } },
+	    { type: 'Feature', properties: { Name: 'UK Medical Center', Address: '800 Rose St' }, geometry: { type: 'Point', coordinates: [-84.508205, 38.031254] } }
+	  ]
+	};
+	var libraries = {
+	  type: 'FeatureCollection',
+	  	features: [
+	    { type: 'Feature', properties: { Name: 'Village Branch', Address: '2185 Versailles Rd' }, geometry: { type: 'Point', coordinates: [-84.548369, 38.047876] } },
+	    { type: 'Feature', properties: { Name: 'Northside Branch', Address: '1733 Russell Cave Rd' }, geometry: { type: 'Point', coordinates: [-84.47135, 38.079734] } },
+	    { type: 'Feature', properties: { Name: 'Central Library', Address: '140 E Main St' }, geometry: { type: 'Point', coordinates: [-84.496894, 38.045459] } },
+	    { type: 'Feature', properties: { Name: 'Beaumont Branch', Address: '3080 Fieldstone Way' }, geometry: { type: 'Point', coordinates: [-84.557948, 38.012502] } },
+	    { type: 'Feature', properties: { Name: 'Tates Creek Branch', Address: '3628 Walden Dr' }, geometry: { type: 'Point', coordinates: [-84.498679, 37.979598] } },
+	    { type: 'Feature', properties: { Name: 'Eagle Creek Branch', Address: '101 N Eagle Creek Dr' }, geometry: { type: 'Point', coordinates: [-84.442219, 37.999437] } }
+	  ]
+	};
+
+
+    /* On the "map" object, load the given function. The functions used here are addLayer and addSource. */
+	map.on('load', function() {
+	  /* This adds a layer to the map object. The following attributes are informational about what the layer is
+	   * adding. First, the hospital geoJSON is being added... */
+	  map.addLayer({
+	    id: 'hospitals',
+	    type: 'symbol',
+	    source: {
+	      type: 'geojson',
+	      data: hospitals
+	    },
+	    layout: {
+	      'icon-image': 'hospital-15'
+	    },
+	    paint: { }
+	  });
+
+	  /* ... and then the libraries geoJSON is added. */
+	  map.addLayer({
+	    id: 'libraries',
+	    type: 'symbol',
+	    source: {
+	      type: 'geojson',
+	      data: libraries
+	    },
+	    layout: {
+	      'icon-image': 'library-15'
+	    },
+	    paint: { }
+	  });
+
+	  map.addSource('nearest-hospital', {
+	    type: 'geojson',
+	    data: {
+	      type: 'FeatureCollection',
+	      features: []
+	    }
+	  });
+	});
+
+	/* This creates pop-ups. */
+	var popup = new mapboxgl.Popup();
+
+	/* This can be read as: when the mouse moves on the map, run this function. e is the present placement of the map. */
+	map.on('mousemove', function(e) {
+		/* This is complex looking for sure, but here's what's happening. Start at e.point, this is finding what
+		 * point your cursor is hovering. It's rendering your point and the layers' information to display if 
+		 * the cursor is over any of the points. */
+		var features = map.queryRenderedFeatures(e.point, { layers: ['hospitals', 'libraries'] });
+		 /*If the length of the features is not (indicated by !) the e, then remove the pop-up. */ 
+		if (!features.length) {
+			popup.remove();
+		return;
+	}
+
+	/* Programming starts counting at index 0, so this is assigning the first term in features to feature. */
+	var feature = features[0];
+
+	/* This set of method calls are all on the popup object. */
+	popup.setLngLat(feature.geometry.coordinates) /* This gives the coordinates for the pop-up. */
+		 .setHTML(feature.properties.Name) /* Converts Name into HTML and adds it to the pop-up. */
+		 .addTo(map); /* Adds pop-up to the map. */
+
+	map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+
+	});
+
+	/* The logic behind this is the same as the other map.on function on line 151. */
+	map.on('click', function(e) {
+		var libraryFeatures = map.queryRenderedFeatures(e.point, { layers: ['libraries'] });
+		if (!libraryFeatures.length) {
+	    	return;
+	  }
+
+		/* Programming starts counting at index 0, so this is assigning the first term in libraryFeatures to libraryFeature. */
+		var libraryFeature = libraryFeatures[0];
+
+		/* This uses Turf.js to find calculate the nearestHospital by analyzing the libraryFeature coordinates
+		 * and hospitals coordinates. */
+		var nearestHospital = turf.nearest(libraryFeature, hospitals);
+
+		/* If the nearestHospital value does not equal null (remember ! is not)... */
+		if (nearestHospital !== null) {
+
+			/* This gets the data of the nearestHopsital from the geoJSON. */
+		    map.getSource('nearest-hospital').setData({
+				type: 'FeatureCollection',
+				features: [nearestHospital]
+		    });
+			
+			/* This adds the layer for the indicating the nearest hospital. */
+		    map.addLayer({
+				id: 'nearest-hospital',
+				type: 'circle',
+				source: 'nearest-hospital',
+				paint: {
+					'circle-radius': 12,
+					'circle-color': '#486DE0'
+		      	}
+		    }, 'hospitals');
+		}
+	});
+
+</script>
+
+</body>
+</html>
