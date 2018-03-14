@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>75</title>
+
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+	
+	<h3>Make a Choropleth Map, Part 1: Create a Style - A Beginner's Tutorial</h3>
+
+	This is the fourth in my mini-series of rewriting some of the Mapbox tutorials that might be overwhelming for people who haven't seen code before. Check out the <a href="https://mzdraper.github.io/postits/72-3-10-2018.html">first tutorial</a> to place markers on a map. <a href ="https://twitter.com/mzdraper">Let me know</a> what you think!
+
+	<br></br>	
+
+	Mapbox puts this in a three part series, the first of which involves adding data and styling a map. While this may be difficult to describe without several images and GIFs, I'll be as succinctly descriptive as possible. <a href="https://www.mapbox.com/help/choropleth-studio-gl-pt-1/">Here</a> is a link to Mapbox's actual tutorial and some examples of the map we'll be making today. 
+
+	<br></br>
+
+	What you'll need to get started:
+
+	<ul>A <b>Mapbox account</b> that can be made freely with an email address. You will need this to generate an <b>access token</b>, which allows you to access Mapbox's API. Find more information <a href="https://www.mapbox.com/account/access-tokens/">here</a></ul>
+
+	<ul>A <b>new, empty folder</b> called <code>route</code> to store your HTML file.</ul>
+
+	<ul>A GeoJSON <a href=""><b>data set</b></a>.</ul>
+
+	<h4>Step One: Upload the Data</h4>
+
+	This data comes in a GeoJSON format. If you're unfamiliar with a GeoJSON, think of it like an address book. The 'FeatureCollection' tells you there are attributes. Then each {contact} tells you its type, it's address or 'geometry', and its properties or contact contents.
+
+	1. Open Mapbox, go to Studio and then <a href="https://www.mapbox.com/studio/tilesets">Tilesets</a> on the top right. 
+	<br>
+	2. Click <b>New Tileset</b> and upload the <code>stateData.geojson</code> data to your account. Wait until the upload has finalized. You'll see a status pop-up on the bottom right of the page with an access code.
+
+	<br>
+
+	<h4>Step Two: Inspect Your Tileset</h4>
+
+	The data will upload as a <a href="https://www.mapbox.com/help/define-tileset">Vector Tileset</a>, meaning it will be rendered (loaded) quickly. On the right panel, you should see various settings and links. Here's a few definitions.
+
+	<b>Map ID</b> is the unique identifier for the tileset, which you can use later on to reference using Mapbox GL JS.
+	<br>
+	<b>Format, Type, Size and Bounds</b> are general information about the individual tileset.
+	<br>
+	<b>Zoom Extent</b> defines the zoom parameter that the tileset will load.
+
+	<h4>Step Three: Create a New Style</h4>
+
+	Now that the data has been uploaded and understood, it's time to apply it to a style. Currently, the data is in a raw format with no stylistic aspects. In Mapbox Studio, we'll be able to styles for proper cartographic representation.
+
+	<br></br>
+
+	1. Click <b>New Style</b> and you'll see a pop-up of pre-made maps.
+	<br>
+	2. Select <b>Light</b> to be taken to the Mapbox Studio Editor. Welcome!
+
+	<h4>Step Four: Add a New Layer</h4>
+
+	1. Click on <b>+ New Layer</b> on the top left. You'll see a sub-menu pop out from the left side of the screen. The map will also have changed colours schemes to black background and neon-highlighted features. This is called <i>X-ray Mode</i>.
+	<br>
+	2. In the new layer panel, click on the <b>Source</b> field to add your newly uploaded data. If needed, zoom out to see the extend of the data set highlighted in X-ray Mode.
+	<br>
+	3. Click the blue <b>Create Layer</b> button at the bottom of the New layer panel. This will put the map back in normal mode. The data set should revert to an unstyled area.
+	<br>
+	4. You can rename your layer by clicking on the layer name near the top of the panel.
+	
+	<h4>Step Five: Style Your Layer</h4>
+
+	Here we'll style the data set to appropriately display the population density. We can do this by editing the property functions. 
+	<br>
+	<i>While I won't be covering how to do this tutorial because of the amount of media it requires, it may be useful to compete Mapbox's tutorial prior to this one if you feel a little overwhelmed. Their tutorial is very good for map editing. It requires no code as well.</i>
+
+	<br></br>
+
+	1. Select your newly created layer to make the editing panel appear.
+	<br>
+	2. Click on <b>* Value Options</b> > <b> Set value by data</b>.
+	<br>
+	3. Set the <b>Field</b> to <code>density</code>, as we're mapping out population density. Setting the Field tells Mapbox Studio what category of the GeoJSON to look at.
+	<br>
+	4. Since population is an integer, you can keep the <b>Domain</b> default as a number.
+	<br>
+	5. Set the <b>Function type</b> to <code>interval</code>. A choropleth map's colours represent different intervals, with colour intensity indicative of the intensity.
+	<br>
+	6. Set the <b>Default value</b> to <code>#800026</code>.
+	<br>
+	7. Do <i>not</i> change the <b>Zoom level</b>.
+
+	<h4>Step Six: Add Stops</h4>
+
+	Stops are <i>stopping</i> points for the data. This is useful with intervals because it breaks the data into chunks. These chunks of data can then be styled in a way that allows them to communicate to the map readers. Because Mapbox Studio's map updates in real time, you'll see the changes appear as you make them. 
+
+	<br></br>
+
+	Create the following stops:
+	<xmp>
+	10: #FFEDA0
+	20: #FED976
+	50: #FEB24C
+	100: #FD8D3C
+	200: #FC4E2A
+	500: #E31A1C
+	1000: #BD0026
+	</xmp>
+
+	Looks good! But it's sort of hard to see the base map below our current map. Change the <b>Opacity</b> to <code>0.6</code> and the <b>1px stroke</b> to <code>#fff</code>. Your map should now look more transparent. But there's another problem now: all the worlds are hard to read with the colours over them. To rearrange your layers, click and hold the three horizontal lines near the name of the data layer and drag them below the <b>Administrative boundaries</b> layer.
+
+	<h4>Step Seven: Publish Your Style</h4>
+
+	While the map changes in real time as you edit it, it won't change publicly. Let's say you have your map on a mobile application, but without publishing the style, the base map will be what users see. If you were apprehensive about not having to save your file, think of this as your pseudo-save button. Just cluck the <b>Publish style</b> button on the top left corner. A conformation pop-up will appear and you're finished with Part 1!
+
+	That's it! Good job on styling your web map! Please <a href="https://twitter.com/mzdraper">message me</a> screen shots of your map, or let me know about any questions or comments you have. Thanks for reading!
+
+</body>
+</html> 
