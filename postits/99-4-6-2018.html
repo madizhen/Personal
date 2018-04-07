@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<!-- style -->
+	<link rel="stylesheet" href="../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../things/compass.png">
+
+	<title>98</title>
+
+</head>
+<body>
+
+	<a href="../index.html">..</a>
+
+	<br></br>
+	
+	<h4>Round 4</h4>
+
+	<br></br>
+
+	The BlackLivesMatter Movement was sparked by a chain of unlawful murders of black men, women and children by the law enforcement. Visibility is crucial in the development of this movement and advancement of civil rights. There are city — and states even — that have not had their law enforcement murder innocent African-Americans, yet there are protestors who righteously stand up against oppression and for this movement. This map aims to promote the visibility of where these murders are occurring and where the protests are occurring as well. Where are you?
+
+This map juxtaposes the murders with the protests. A red cross indicates the murderer walked free, and a green cross indicates at least some lawful action was taken against the murderer. The different sizes of the white circles represent protests from 100–499, 500–999 and 1000+ protestors. The map was created using Mapbox Studio and Mapbox GL JS.
+
+
+Figuring out how to weight the circles was challenging. While the priority is the victims, the protests show support and resilience. The smallest circle had the most difficulty showing up, but I tried to fix that by using a different image with a greater stroke.
+The Challenge
+
+For the past few weeks Mapbox challenged their users to create a series of maps using their various tools. First was styling a map using Cartogram; second was adding a point to a map; third was extruding 3D buildings in Mapbox Studio; and fourth was creating a web or mobile application using Mapbox Studio, Mapbox GL JS and writing about it. Prior to the competition’s release, I had a tweet thread going of cartography I was doing with Mapbox. On the thread, I added my submissions for challenges one, two, three and soon four.
+
+
+The pop-ups tell you their name and the day of their death. Unfortunately, for many of them, they died the same day as the incident.
+The Design
+
+I reviewed various images and materials released by the BlackLivesMatter organisation to gain a sense of their stylistic choices and presence in their design. I started out by drafting this map on paper, thinking about what I wanted to map exactly. The crosses were difficult to choose, and they honestly might not be the right icon to represent this. However, for legibility, crosses are a common sign of injury/death and both green and red are often attributed positively and negatively, respectively, when they’re used together. I chose white outlined-no fill circles to represent the protests because a fill caused them to overlap too much — overshadowing the smaller circles — and look too bulgy. The transparent circles not only emphasises the number of protests, but it also conveys a ripple effect from the protests. Their voices are being heard!
+
+In Mapbox Studio, I uploaded the font Anton and used #F9EA0E, #FFFFFF and #000000 for a simple palette. The water had to be a dark grey instead of black like I originally wanted because the country outline on the tiles did not account for water boundaries.
+
+Also in Studio, I added building 3D buildings. When zooming in to street level, the viewer has the ability to see the surroundings of the victims: Where their other buildings nearby? Why did this happen in some place so urban — so rural? Finding out the patterns to killings might be helpful for analysing police routing and for scared people to make more informed decisions.
+
+
+Only the area near Trayvon Martin’s death has been mapped with buildings — which likely happened after the fact anyway. Mappers have a lot of power when influencing political & technical decisions. Non-white neighbourhoods ought to be mapped just as extensively to contribute to creating a more civil and equal world.
+The Code
+
+The code was fairly straightforward, but the data was not. Let me walk you through my experience.
+
+I started off with a simple icon display example from Mapbox to get my map initiated and referred to the structure of the custom markers tutorial.
+I filled out the map with what my map data/information.
+I gathered and organised data for murders, then for protests. I used mostly university released material, CNN, and local news channels and local newspapers. This took about 2 days to complete.
+I thought it still looked confusing to at first glance, so I added the summary panel to orient people and introduce the topic.
+I tried playing around with buttons and layering. I tried playing around with a slider. I had a lot of fun. But time was running out, so I added these to my to-do list.
+I commented the code for anyone to use/read — even if they didn’t have prior programming knowledge.
+I published the map on GitHub Pages here.
+(To-do) Write a README.md to invite and tell people how to to edit the map.
+Data for grassroots organisations is usually sparse or incomplete. So I set out to write my own: I ended up writing over 1,400 lines of GeoJSON. This amounted to around 150 points on the map! When clicking on a victim’s cross, a small pop-up will rise to tell the name of the victim and the day of their death. Code snippets can be seen below.
+
+
+These are the first two points of murders that went non-convicted.
+
+The comments below the text refer to what it does.
+While there have been less than 50 murders (46 is still 46 too many), that means there have been over 100 protests that had at least 100 people in support. Many with over 1000, and many more with over 500. It is steeply uphill, but you are not alone in this.
+
+For viewers who are unsure about what this map is about, a quick summary panel was added to educate and activate viewers. I found this useful to orient people and educate those new to the movement.
+
+
+Content for summary panel.
+
+CSS styling for the summary panel.
+All the code for this project can be found here. While this project is open and growing, I encourage you to add or edit any data. Please provide a data source in your commit message. If you’re unfamiliar with code and you still want to help, the code is written with extensive commentary and “in plain English” to help you. A document will soon be provided to walk you through it. Feel free to contact me about any questions or corrections!
+
+Here is the open-source GitHub for the map for you to contribute or learn — or both!
+
+
+The Lessons
+
+Each of these challenges have taught me so much. But what I’ve learned from this project has been indispensable. I learned how to represent high clustered data. I learned how to style a map based off of previous styling conventions from an organisation. I learned how to layer map layers appropriately. I learned how to be tenacious with GeoJSON file building when no prior dataset exists. I learned how to tell a story to people using a map. While I love mapping, I’d have to say the most important things I have learned throughout this project are the stories of each victim. #SayTheirName
+
+What Next?
+
+While scanning through Mapbox’s examples page, I was inspired to do so much more with this map. My next goal is to add button functionality in the summary panel to turn different layers on and off for a better visual effect and increased interactivity. Map Madness may be over, but as the phrase goes, “It’s not just a moment, it’s a movement.” I will continue to work on this map, and I hope you will join me. For other updates about mapping, follow my Twitter thread and checkout my daily blog where I explain cartography, coding, Mapbox tools and bits about myself.
+
+Throughout Map Madness, I was able to blend components from each of the preceding challenges. This experience helped me build at a workable pace. And it was awesome to see everyone’s maps! Thanks so much for reading! Please reach out if you have any questions or comments, I’d be happy to talk to you! :)
+</body>
+</html>
