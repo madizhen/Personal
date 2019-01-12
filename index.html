@@ -26,10 +26,10 @@
     <div class="headshot"></div>
     <br>
     <ul class="links animated fadeInLeft">
-        <li><a href="https://www.linkedin.com/in/mandy-zhang-958a7b113/"><i class="fa fa-linkedin"></i></a></li>
-        <li><a href="https://github.com/mzhang4"><i class="fa fa-github"></i></a></li>
-        <li><a href="https://play.spotify.com/user/mzhang4"><i class="fa fa-spotify"></i></a></li>
-        <li><a href="things/resume.pdf" target="last updated: may 2017"><i class="fa fa-file-pdf-o"></i></a></li>
+        <li><a href="https://www.linkedin.com/in/mzdraper/"><i class="fa fa-linkedin"></i></a></li>
+        <li><a href="https://github.com/mzdraper"><i class="fa fa-github"></i></a></li>
+        <li><a href="https://play.spotify.com/user/_draper"><i class="fa fa-spotify"></i></a></li>
+        <li><a href="things/resume.pdf" target="last updated: december 2018"><i class="fa fa-file-pdf-o"></i></a></li>
     </ul>
 </div>
 <!-- end left -->
@@ -38,103 +38,24 @@
 <div class="right animated fadeInUp">
     <div id="tab"><div class="circle red"></div><div class="circle yellow"></div><div class="circle green"></div></div>
     <div id="terminal">
-        <span class="input">>>></span> mz <br>
+        <span class="input">>>></span> mzd <br>
         <span class="output">{<br>
-            &nbsp; &nbsp; "<span class="string">name </span>": "<span class="string">mandy zhang</span>", <br>
-            &nbsp; &nbsp; "<span class="string">work</span>": "<span class="string">mechanical engineer @ apple/gist</span>", <br>
-            &nbsp; &nbsp; "<span class="string">location</span>": "<span class="string">sf bay area</span>", <br>
-            &nbsp; &nbsp; "<span class="string">school</span>": "<span class="string">mechanical engineering @ uc berkeley</span>"<br>}</span> <br><br>
+            &nbsp; &nbsp; "<span class="string">name </span>": "<span class="value">madison draper</span>", <br>
+            &nbsp; &nbsp; "<span class="string">location</span>": "<span class="value">sf bay area</span>", <br>
+            &nbsp; &nbsp; "<span class="string">school</span>": "<span class="value">geography @ uc berkeley</span>"<br>}</span> <br><br>
         <span class="input">>>></span> work_experience <br>
         <span class="output">{<br>
-            &nbsp; &nbsp; "<span class="string">past</span>": "<span class="string">mechanical engineer intern @ apple</span>", <br>
-            &nbsp; &nbsp; "<span class="string">present</span>": "<span class="string">mechanical engineer @ apple</span>"<br>}</span> <br><br>
+            &nbsp; &nbsp; "<span class="string">past</span>": "<span class="value2">support engineer intern @ mapbox</span>", <br>
+            &nbsp; &nbsp; "<span class="string">present</span>": "<span class="value2">Reader/UGSI @ UC Berkeley</span>"<br>}</span> <br><br>
         <span class="input">>>></span> interests <br>
-        <span class="output">["<span class="string">dogs</span>",
-                              "<span class="string">apple</span>",
-                              "<span class="string">oranges</span>",
-                              "<span class="string">pears</span>"]</span> <br><br>
-        <span class="input">>>></span> aPpLe <br>
-        <span class="output">["<a href="http://apple.com/">meetings</a>"]</span><br><br>
+        <span class="output">["<span class="array"><a class='link' href="doodle/index.html">maps</a></span>",
+                              "<span class="array"><a class='link' href="write/index.html">writing</a></span>",
+                              "<span class="array"><a class='link' href="walk/index.html">walking</a></span>"]</span> <br><br>
         <span class="input">>>></span> contact<br>
-        <span class="output">"<a href="mailto:mzhang4@berkeley.edu">mzhang4@berkeley.edu</a>"</span><br><br>
+        <span class="output">"madizhen {at} gmail {dot} com"</span><br><br>
     </div>
 </div>
 <!-- end right -->
 
-<!-- posts -->
-<div class="footer">
-  <div id="posts">
-    <p>
-    <!-- please ignore my lazieness -->
-    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br>
-    <!-- end of laziness (probably) -->
-    Hi, my name is Mandy.
-
-    <br></br>
-
-    <!-- images
-    <div id="images">
-      <img class="maps" border="0" img src="things/blm.png" alt="blm" width="296" height="190">
-      <img class="maps" border="0" img src="things/adoptionmap.png" alt="adoption map" width="296" height="190">
-      <img class="maps" border="0" img src="things/taps.jpg" alt="Tapatio" width="296" height="190">
-    </div>
-    end of images -->
-
-    <br></br>
-  </div>
 </div>
-
-<body>
-
-<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-
-<script>
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-    if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
-        document.getElementById("myBtn").style.display = "block";
-    } else {
-        document.getElementById("myBtn").style.display = "none";
-    }
-}
-
-function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-</script>
-
-<script>
-jQuery(document).ready(function() {
-    var offset = 220;
-    var duration = 500;
-    jQuery(window).scroll(function() {
-        if (jQuery(this).scrollTop() > offset) {
-            jQuery('.move-top').fadeIn(duration);
-        } else {
-            jQuery('.move-top').fadeOut(duration);
-        }
-    });
-    jQuery('.move-top').click(function(event) {
-        event.preventDefault();
-        jQuery('html, body').animate({scrollTop: 0}, duration);
-        return false;
-    })
-});
-</script>
-</body>
-<!--end of button -->
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-70344118-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
 </body>

@@ -25,7 +25,7 @@ h1 {
 
 a:link, a:visited {
 	text-decoration: none;
-    color: #5f94f0;
+    color: #EE7600;
 } a:hover {
     text-decoration: underline;
 }
@@ -60,15 +60,15 @@ a:link, a:visited {
 }
 
 .headshot {
-	width: 198px;
-	height: 198px;
+	width: 180px;
+	height: 180px;
 	transform-style: preserve-3d;
 	background-image: url('../things/me2.jpg');
-	background-size: 200px;
+	background-size: 270px;
 	background-position: center;
 	border-radius: 180px;
 	display:inline-block;
-	margin:0px 12px -5px auto;
+	margin:80px 12px -5px auto;
 }
 
 #terminal {
@@ -76,29 +76,29 @@ a:link, a:visited {
 	color:#f8f8f8;
 	font-family: 'Inconsolata';
 	text-align: left;
-	margin: 0px auto 10px auto;
+	margin: 0px auto 100px auto;
 	width: 100%;
 	background-color:#445566;
 	padding:10px 0px 0px 15px;
 	border-radius: 0px 0px 4px 4px;
-} 
+}
 
 #tab {
 	margin: auto;
-	margin-top:10px;
+	margin-top:100px;
 	background-color:#e3e3e3;
 	border-radius: 4px 4px 0px 0px;
 	padding: 1px 9px 0px 6px;
 	height: 18px;
 	width: 100%;
-} 	    
+}
 .circle {
 	width: 8px;
 	height:8px;
 	border-radius: 8px;
 	margin: 4px 7px 1px 0px;
 	float:left;
-} 
+}
 .red {
 	background-color:#FF4D4D;
 	border: solid 1px #B83737;
@@ -106,7 +106,7 @@ a:link, a:visited {
 .yellow {
 	background-color:#FFDB4D;
 	border: solid 1px #CCAF3E;
-} 
+}
 .green {
 	background-color:#33CC33;
 	border: solid 1px #29A329;
@@ -115,8 +115,17 @@ a:link, a:visited {
 .input {
 	color: #c7c7c7;
 }
+
 .string {
 	color:#fff1b7;
+}
+
+.value {
+	color:#98ff98;
+}
+
+.value2 {
+	color:#00E5EE;
 }
 
 .fa {
@@ -156,7 +165,7 @@ images {
 #posts {
   	font-family: 'palatino', sans-serif;
   	color: #444447;
-  	text-align: justify;
+  	text-align: center;
   	padding-bottom: 20px;
   }
 
