@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- style -->
+	<link rel="stylesheet" href="../../../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../../../things/compass.png">
+
+	<!-- font -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+	<title>mzd</title>
+</head>
+<body>
+	<style>
+		.title {
+			text-align: center;
+		}
+
+    .content {
+      text-align: justified;
+    }
+		.responsive {
+		  width: 50%;
+		  height: auto;
+			display: block;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		/* 100% Image Width on Smaller Screens */
+		@media only screen and (max-width: 700px){
+		  .modal-content {
+		    width: 100%;
+		  }
+		}
+	</style>
+  <a href="../maps.html">../</a>
+
+  <br></br>
+
+	<body>
+		<h2 class="title"> Sanborn-ish </h2>
+    <h3 class="title"> History & Inspiration </h3>
+    <p class="content">
+      Sanborn Map Company made maps for fire insurnace companies in the 19th and 20th centuries of about 12,000 cities and towns across the United States. At a 1:50 scale, these maps are high detailed about building features and materials. The physical maps are actually quite huge. Each mapis approximagely 21in by 25in. The last map was created in microfilm in the late 1970's, but the collection is widely popular for historial urban geography research.
+    <p><img class="responsive" src="../../maps/original-sanborn.png" alt="Sanborn" style="width:100%;max-width:800px"></p>
+    <h3 class="title"> Design Elements </h3>
+    <p class="content">
+      <ul>
+				<li><b>Zoom.</b> The scale of these maps are fixed very closely, only a few intersections per map. To recreate this sketched effect, the map is zoomed out considerably, showing hundreds of intersections at once. The handdrawn sketch look chosen over the scale because of the nature of slippy maps. Furthermore, Sanborn maps weren't produced for small scale areas like regions--let alone nations. When zooming out, the colouring continues to densely populated urban areas, which is conceivably related to how buildings in density and materials. </li>
+				<br>
+				<li><b>Colours.</b> According to the <a href="http://www.dahp.wa.gov/sites/default/files/SanbornMapGuide_1942.pdf">Sanborn legend</a>, the colours indicate the building materials. While that information isn't present in the <a href="https://github.com/mapbox/mapbox-gl-js/blob/master/src/style-spec/reference/v8.json">Mapbox Streets V8 tileset</a>, the buildings are categorised by type. The specific building types being shown here are bulked categories, meaning they're umbrella types with several fitting types per category. For example, the <code>Residential</code> umbrella category includes apartments, houses, house-boats and other types of spaces of residing.</li>
+			<ul>
+    </p>
+    <ul>
+			<p><img class="responsive" src="../../maps/sanborn_sf.png" alt="Sanborn Inspired SF" style="width:100%;max-width:800px">
+			<p><img class="responsive" src="../../maps/sanborn_sf_close.png" alt="Sanborn Inspired Close Up" style="width:100%;max-width:800px">
+			<p><img class="responsive" src="../../maps/sanborn_japan.png" alt="Sanborn Inspired Japan" style="width:100%;max-width:800px">
+			<p><img class="responsive" src="../../maps/sanborn_europe.png" alt="Sanborn Inspired Europe" style="width:100%;max-width:800px">
+			<h3 class="title"> <a href="https://twitter.com/mzdraper/status/1125485414532374528"> <i>Share Sanborn-ish on Twitter</i> </a></h3>
+    </ul>
+	</body>
+</html>

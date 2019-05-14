@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- style -->
+	<link rel="stylesheet" href="../../../css/style.css">
+
+	<!-- favicon -->
+	<link rel="icon" href="../../../things/compass.png">
+
+	<!-- font -->
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+
+	<title>mzd</title>
+</head>
+<body>
+  <style>
+		.title {
+			text-align: center;
+		}
+
+    .content {
+      text-align: justified;
+    }
+		.responsive {
+		  width: 50%;
+		  height: auto;
+			display: block;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+
+		/* 100% Image Width on Smaller Screens */
+		@media only screen and (max-width: 700px){
+		  .modal-content {
+		    width: 100%;
+		  }
+		}
+	</style>
+  <a href="../maps.html">../</a>
+
+  <br></br>
+
+	<body>
+    <h2 class="title"> Mineral </h2>
+    <h3 class="title"> History & Inspiration </h3>
+    <p class="content">
+      In the 1940's, the British Infornmation Services published the map, <i>Great Britain--Her Natural and Industrial Resources</i>.
+      This map elegantly juxtaposes the island's landuse with different locations' industries.
+      The cities then act as nexuses between the different regions, enabling trade and production.
+      The visual connection allows one to understand the relationship between the agriculture and industry.
+      How do people modify the landscape to for their needs?
+    </p>
+    <p><img src="../../maps/original-mineral.jpg" alt="Great Britain--Her Natural & Industrial Resources" style="width:100%;max-width:800px"></p>
+    <h3 class="title"> Design Elements </h3>
+    <p class="content">
+      <ul>
+				<li><b>Lines.</b> Because the original map shows Great Britain, there aren't political adminstriative boundary lines. There are only lines for how the different industries, and therefore, resources are connected. In <i>Mineral</i>, there are no admisntrative boundaries. There are only railroad boundaries, which connect cities, resources and people together for intrastate and interstate affairs.</li>
+				<br>
+				<li><b>Colours.</b> The original map colours the map based off the type of resource available. This map is simplified in a couple ways: (1) the amount of total resource types and (2) the types of resources. Limiting the number of resources types helps communicate the landmass across zoom levels, especially at lower zoom levels. It gives the polygons a greater amount of landmass instead of having several smaller polygons at a low zoom level. This also helps meet a reader's expectation of what the map should look like. Looking at the legend, the data is quite unique. So unique that it might not be easily understood to the readers. Having conceiviable categories is essential for readers to connect with what the map is communicating about the world. </li>
+				<br>
+				<li><b>Text.</b> Mapbox Studio doesn't support <code>text-background</code>, so the yellow bar behind the text is a bit of a workaround with maxed out <code>text-halo</code>. Because red, nor any other colour with a similar hue, is part of the map, the red circle explicity indicates quickly to readers where locations are without any confusion for cities with different name lengths.</li>
+			<ul>
+    </p>
+    <ul>
+      <p><img class="responsive" src="../../maps/mineral_us.png" alt="Mineral US" style="width:100%;max-width:800px"></p>
+      <p><img class="responsive" src="../../maps/mineral_world.png" alt="Mineral World" style="width:100%;max-width:800px">
+  		<p><img src="../../maps/mineral_europe.png" alt="Mineral Europe" style="width:100%;max-width:800px">
+			<h3 class="title"> Taxonomy </h3>
+	    <p class="content">
+				This taxonomy chart breaks down the map's elements and unmarries them from their geographic context. Here's <a href="https://blog.mapbox.com/map-design-taxonomy-chart-ae17b23df019">a great post on taxonpmy charts</a> for more about their purpose. This chart is a bit different though because I keep retain the geographic context, but remove it from the other geographic elements. I believe with all data, especially geographic, context is critical. So I kept some and examined each element individually.
+			</p>
+      <p><img class="responsive" src="../../maps/mineral_tax.png" alt="Mineral Taxonomy" style="width:100%;max-width:800px">
+			<h4 class="title"> <a href="https://twitter.com/mzdraper/status/1092326516300537856"> <i>Share Mineral on Twitter</i> </a></h4>
+    </ul>
+	</body>
+</html>
